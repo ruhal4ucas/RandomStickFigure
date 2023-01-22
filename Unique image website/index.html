@@ -1,0 +1,68 @@
+<head>
+    <title>Random Image Stack</title>
+    <body>
+        <h1 style="text-align: center;">PRESS F5</h1>
+    </body>
+      <style>
+      /* Using CSS to style the images */
+      .image-stack {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+      }
+      .small-img {
+        max-width: 20%;
+        max-height: 20%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="image-stack">
+    <img src="head/image1.png" id="image1" class="small-img">
+    <img src="body/image2.png" id="image2" class="small-img">
+    <img src="legs/image3.png" id="image3" class="small-img">
+    </div>
+
+    <script>
+      // JavaScript to randomly select and display 3 images
+      var head = ["image1.png", "image2.png", "image3.png"];
+      var body = ["image4.png", "image5.png", "image6.png"];
+      var legs = ["image7.png", "image8.png", "image9.png"];
+      var images = [head, body, legs];
+
+      // Function to randomly select an image from each folder
+      function selectRandomImages() {
+        for (var i = 0; i < images.length; i++) {
+          var randomIndex = Math.floor(Math.random() * images[i].length);
+          var randomImage = images[i][randomIndex];
+          if (i == 0){
+            document.getElementById("image1").src = "head/" + randomImage;
+          } else if (i == 1){
+            document.getElementById("image2").src = "body/" + randomImage;
+          } else {
+            document.getElementById("image3").src = "legs/" + randomImage;
+          }
+        }
+      }
+      function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+
+      function changeBackgroundColor() {
+        var randomColor = getRandomColor();
+        document.body.style.backgroundColor = randomColor;
+      }
+      
+      changeBackgroundColor();
+      // Call the function to select and display the images
+      selectRandomImages();
+    </script>
+  </body>
+</html>
